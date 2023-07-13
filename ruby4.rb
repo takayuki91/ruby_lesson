@@ -197,3 +197,106 @@ puts "---------------"
 
 puts ["ruby", "java", "python"].map { |s| s.upcase }
 puts ["ruby", "java", "python"].map(&:upcase)
+
+
+
+puts "---------------"
+# 4.5 範囲（Range）
+# 範囲オブジェクトはRangeクラスのオブジェクト
+
+puts (1..5).class # 1以上5以下
+puts (1...5).class # 1以上5未満
+
+a = 1..5
+b = 1...5
+puts a.include?(1)
+puts a.include?(4.9)
+puts a.include?(5)
+puts b.include?(1)
+puts b.include?(4.9)
+puts b.include?(5)
+
+puts "---------------"
+# 4.5.1 配列や文字列の一部を抜き出す
+
+a = [1, 2, 3, 4, 5]
+puts a[0..3]
+
+b = "abcdef"
+puts b[0..2]
+
+puts "---------------"
+# 4.5.2 n以上m以下、n以上m未満の判定をする
+
+def liquid?(temperature)
+  0 <= temperature && temperature < 100
+end
+
+puts liquid?(-1)
+puts liquid?(0)
+puts liquid?(99)
+puts liquid?(100)
+
+def liquid?(temperature)
+  (0...100).include?(temperature)
+end
+
+puts liquid?(-1)
+puts liquid?(0)
+puts liquid?(99)
+puts liquid?(100)
+
+puts "---------------"
+# 4.5.3 case文で使う
+
+def charge(age)
+  case age
+  when 0..5
+    "¥0"
+  when 6..12
+    "¥300"
+  when 13..18
+    "¥600"
+  else
+    "¥1000"
+  end
+end
+
+puts charge(5)
+puts charge(10)
+puts charge(16)
+puts charge(33)
+
+puts "---------------"
+# 4.5.4 値が連続する配列を作成する
+
+a = (1..5).to_a
+b = (1...5).to_a
+puts a
+puts b
+
+c = ("a".."e").to_a
+d = ("a"..."e").to_a
+puts c
+puts d
+
+c = [*"a".."e"] # ("a".."e").to_aと同じ
+d = [*"a"..."e"] # ("a"..."e").to_aと同じ
+puts c
+puts d
+
+puts "---------------"
+# 4.5.5 繰り返し処理を行う
+
+numbers = (1..4).to_a
+sum = 0
+numbers.each { |n| sum += n }
+puts sum
+
+sum = 0
+(1..4).each { |n| sum += n }
+puts sum
+
+numbers = []
+(1..10).step(3) { |n| numbers << n } # stepメソッド => 値を増やす間隔を指定
+puts numbers 
