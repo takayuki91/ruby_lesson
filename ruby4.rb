@@ -131,8 +131,8 @@ end
 puts new_numbers
 
 puts "---------------"
-# 4.4.2 select/find_all/reject要素のみ集める
-# => ブロックの戻り値が真（偽）の
+# 4.4.2 select/find_all/reject
+# => ブロックの戻り値が真（偽）の要素のみ集める
 
 numbers = [1, 2, 3, 4, 5, 6]
 odd_numbers = numbers.select do |n| # selectはtrueを返す
