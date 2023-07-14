@@ -299,4 +299,110 @@ puts sum
 
 numbers = []
 (1..10).step(3) { |n| numbers << n } # stepメソッド => 値を増やす間隔を指定
-puts numbers 
+puts numbers
+
+puts "---------------"
+# 4.7.1 様々な要素の取得方法
+
+# 配列[位置, 取得する長さ]
+
+a = [1, 2, 3, 4, 5]
+puts a[1, 3]
+
+puts a[0]
+puts a.values_at(0, 2, 4)
+
+puts a[a.size - 1]
+
+puts a[-1]
+
+puts a.last
+
+puts a.last(2)
+
+puts "---------------"
+# 4.7.2 様々なう要素の変更方法
+
+a[-3] = 30
+puts a
+
+a = [1, 2, 3, 4, 5]
+
+a[1, 3] = 100
+puts a
+
+a = []
+a.push(1)
+a.push(10, 100)
+puts a
+
+puts "---------------"
+# 4.7.3 配列の結合
+
+c = [1]
+d = [2, 3]
+
+puts c.concat(d)
+
+array = [1]
+other = [2, 3]
+
+linking = array + other
+puts linking
+puts array
+puts other
+
+puts "---------------"
+# 4.7.4 配列の和集合、差集合、積集合
+
+a = ["カレー", "ラーメン", "寿司"]
+b = ["ステーキ", "寿司", "パエリア"]
+
+puts a | b
+
+puts a - b
+
+puts a & b
+
+require "set"
+# a = Set[1, 2, 3]
+# b = Set[3, 4, 5]
+a = Set["カレー", "ラーメン", "寿司"]
+b = Set["ステーキ", "寿司", "パエリア"]
+puts a | b
+puts a - b
+puts a & b
+
+puts "---------------"
+# 4.7.5 多重代入で残りの全要素を配列として受け取る
+
+e, *f = 100, 200, 300
+puts e
+puts f
+
+puts "---------------"
+# 4.7.6 1つの配列を複数の引数やwhen節の条件として展開
+
+a = []
+b = ["ラーメン", "ギョウザ"]
+a.push("チャーハン")
+a.push(*b) # splat演算子 
+puts a 
+
+puts "---------------"
+# 4.7.7 メソッドの可変長引数
+
+def greet(*names)
+  "#{names.join("と")}、こんにちは！"
+end
+
+puts greet("田中さん")
+puts greet("田中さん", "須藤さん")
+
+puts "---------------"
+# 4.7.8 *で配列同士を非破壊的に連結する
+
+a = [1, 2, 3]
+puts [*a]
+
+puts [-1, 0, *a, 4, 5]
