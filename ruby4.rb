@@ -386,8 +386,8 @@ puts "---------------"
 a = []
 b = ["ラーメン", "ギョウザ"]
 a.push("チャーハン")
-a.push(*b) # splat演算子 
-puts a 
+a.push(*b) # splat演算子
+puts a
 
 puts "---------------"
 # 4.7.7 メソッドの可変長引数
@@ -406,3 +406,144 @@ a = [1, 2, 3]
 puts [*a]
 
 puts [-1, 0, *a, 4, 5]
+
+
+puts "---------------"
+# 4.7.9 ==で等しいかどうか判断
+
+puts [1, 2, 3] == [1, 2, 3]
+
+puts [1, 2, 3] == [1, 2]
+
+puts "---------------"
+# 4.7.10 %記法で文字列の配列を簡潔に作る
+
+puts ["apple", "orange", "melon"]
+
+puts %w!apple orange melon!
+puts %w(apple orange melon)
+puts %w!red\ apple orange\ orange green\ melon!
+
+puts "---------------"
+# 4.7.11 文字列を配列に変換
+
+puts "Ruby".chars
+puts "Ruby,Java,Python".split(",")
+
+puts "---------------"
+# 4.7.12 配列にデフォルト値を設定
+
+puts a = Array.new(5)
+puts a = Array.new(5, 0)
+
+puts a = Array.new(10) { |n| n % 3 + 1 }
+
+puts "---------------"
+# 4.7.13 配列にデフォルト値を設定する場合の注意点
+
+a = Array.new(5, "default")
+puts a
+
+str = a[0]
+puts str
+
+str.upcase!
+puts str
+
+puts a # a => DEFAULT * 5
+
+b = Array.new(5) { "default"}
+puts b
+
+str = b[0]
+puts str
+
+str.upcase!
+puts b # DEFAULT + default * 4
+
+
+
+puts "---------------"
+# 4.8 ブロックについてもっと詳しく
+# 4.8.1 添え字付きの繰り返し処理
+
+foods = ["ラーメン", "ギョウザ", "チャーハン"]
+foods.each_with_index { |food, f| puts "#{f}: #{food}" }
+
+puts "---------------"
+# 4.8.2 with_indexメソッドを使った添え字付きの繰り返し処理
+
+puts foods.map.with_index{ |food, f| "#{f}: #{food}" }
+
+puts foods.delete_if.with_index{ |food, f| food.include?("メン") && f.even? }
+
+puts "---------------"
+# 4.8.3 添え字を0以外の数値から開始させる
+
+foods = ["ラーメン", "ギョウザ", "チャーハン"]
+
+foods.each.with_index(1) { |food, f| puts "#{f}: #{food}" }
+
+puts foods.map.with_index(100){ |food, f| "#{f}: #{food}" }
+
+puts "---------------"
+# 4.8.4 配列がブロックパラメータに渡される場合
+
+dimensions = [
+    # [縦, 横]
+    [10, 20],
+    [30, 40],
+    [50, 60],
+  ]
+    # 面積の計算結果を格納する配列
+    areas = []
+    # ブロックパラメータが1個であれば、ブロックパラメータの値が配列になる
+    dimensions.each do |dimension|
+      length = dimension[0]
+      width = dimension[1]
+      areas << length * width
+    end
+
+puts areas
+
+# 492〜505を簡潔に
+dimensions = [
+    # [縦, 横]
+    [10, 20],
+    [30, 40],
+    [50, 60],
+  ]
+    # 面積の計算結果を格納する配列
+    areas = []
+    # ブロックパラメータが1個であれば、ブロックパラメータの値が配列になる
+    dimensions.each do |length, width|
+      areas << length * width
+    end
+
+puts areas
+
+puts "---------------"
+# 位置情報も添える
+dimensions = [
+    [10, 20],
+    [30, 40],
+    [50, 60],
+  ]
+    dimensions.each_with_index do |(length, width), i |
+      puts "length: #{length}, width: #{width}, i: #{i}"
+    end
+
+puts "---------------"
+# 入れ子になった配列を変数に多重代入する
+
+dimension, i = [[10, 20], 0]
+puts dimension
+puts i
+
+(length, width), i = [[10, 20], 0]
+puts length
+puts width
+puts i
+
+puts "---------------"
+# 4.8.5 番号指定パラメータ
