@@ -584,3 +584,131 @@ a = [1, 2, 3]
 puts a.delete(100) do
   "NG"
 end
+
+
+
+puts "---------------"
+# 4.9 Rangeについてもっと詳しく
+numbers = [1, 2, 3, 4, 5]
+
+puts numbers[2..]
+puts numbers[..1]
+puts numbers[..nil]
+
+
+
+puts "---------------"
+# 4.10 さまざまな繰り返し処理
+
+# 4.10.1 timesメソッド
+
+sum = 0
+5.times { |n| sum += n }
+puts sum
+
+sum = 0
+5.times { sum += 1 }
+puts sum
+
+puts "---------------"
+# 4.10.2 uptoとdownto
+
+a = []
+10.upto(14) { |n| a << n }
+puts a
+
+b = []
+14.downto(10) { |n| b << n }
+puts b
+
+puts "---------------"
+# 4.10.3 stepメソッド
+# 開始値.step(上限値, 一度に増減する大きさ)
+
+a = []
+1.step(10, 2){ |n| a << n }
+puts a
+
+b = []
+10.step(0, -2){ |n| a << n }
+puts a
+
+puts "---------------"
+# 4.10.4 while文とuntil文
+
+a = []
+while a.size < 5
+  a << 1
+end
+
+puts a
+
+a = []
+while a.size < 5 do a << 1 end
+
+puts a
+
+a = []
+a << 1 while a.size < 5
+puts a
+
+puts "---------------"
+a = []
+begin # どんな条件でも最低一回は実行される
+ a << 1
+end while false
+puts a
+
+a = [10, 20, 30, 40, 50]
+until a.size <= 3
+  a.delete_at(-1)
+end
+puts a
+
+puts "---------------"
+# 4.10.5 for文
+numbers =[1, 2, 3, 4]
+sum = 0
+for n in numbers
+  sum += n
+end
+
+puts sum
+
+puts "---------------"
+# 4.10.6 loopメソッド
+# あえて無限ループ
+
+numbers = [1, 2, 3, 4, 5]
+loop do
+  n = numbers.sample # sampleメソッドでランダムに要素を取得
+  puts n
+  break if n == 5
+end
+
+puts "---------------"
+# while文で書くことも可能
+while true
+  n = numbers.sample
+  puts n
+  break if n == 5
+end
+
+puts "---------------"
+# 4.10.7 再帰呼び出し
+# あるメソッドの中で、そのメソッド自身をもう一度呼び出すこと
+
+def factorial(n)
+  n > 0 ? n * factorial(n - 1) : 1
+end
+
+puts factorial(5)
+
+# 書き換え
+def factorial(n)
+  ret = 1
+  (1..n).each { |n| ret *= n }
+  ret
+end
+
+puts factorial(5)
