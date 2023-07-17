@@ -547,3 +547,40 @@ puts i
 
 puts "---------------"
 # 4.8.5 番号指定パラメータ
+
+# 番号指定パラメータを使わない場合
+puts ["1", "20", "300"].map { |s| s.rjust(3, "0") }
+
+# 番号指定パラメータを使う場合
+puts  ["1", "20", "300"].map { _1.rjust(3, "0") }
+
+# 番号指定パラメータを使わない場合
+puts ["japan", "us", "italy"].map.with_index { |country, n| [n, country] }
+
+# 番号指定パラメータを使う場合
+puts ["japan", "us", "italy"].map.with_index { [_2, _1] }
+
+puts "---------------"
+# 4.8.6 ブロックローカル変数
+
+numbers = [1, 2, 3, 4]
+sum = 0
+
+numbers.each do |n; sum|
+  sum = 10
+  sum += n
+  puts sum
+end
+
+puts sum
+
+puts "---------------"
+# 4.8.8 do..endと{}の結合度の違い
+
+a = [1, 2, 3]
+puts a.delete(100)
+
+a = [1, 2, 3]
+puts a.delete(100) do
+  "NG"
+end
