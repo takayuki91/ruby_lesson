@@ -761,6 +761,7 @@ end
 
 puts "---------------"
 # 4.11.5 redo
+# 再び（re）実行する（do）
 
 questions = ["案件A", "案件B", "案件C"]
 questions.each do |q|
