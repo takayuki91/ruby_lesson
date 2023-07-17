@@ -712,3 +712,61 @@ def factorial(n)
 end
 
 puts factorial(5)
+
+puts "---------------"
+# 4.11 繰り返し処理用の制御構造
+# 4.11.1 break
+
+numbers = [1, 2, 3, 4, 5].shuffle
+numbers.each do |n|
+  puts n
+  break if n == 5
+end
+
+puts "---------------"
+ramens = ["とんこつラーメン", "醤油ラーメン", "塩ラーメン"]
+taste = ["スープを飲む", "麺をすする", "完食！"]
+ramens.each do |ramen|
+  taste.shuffle.each do |t|
+    puts "#{ramen}, #{t}"
+    break if t == "完食！"
+  end
+end
+
+puts "---------------"
+# 4.11.2 throwとcatchを使った大域脱出
+
+foods = ["お肉料理", "魚料理", "デザート"]
+drinks = ["ビール", "ワイン", "コーヒー"]
+catch :done do
+  foods.shuffle.each do |f|
+    drinks.shuffle.each do |d|
+      puts "#{f}と#{d}"
+      if f == "デザート" && d == "コーヒー"
+        puts "お会計！"
+        throw :done
+      end
+    end
+  end
+end
+
+puts "---------------"
+# 4.11.4 next
+
+numbers = [1, 2, 3, 4, 5]
+numbers.each do |n|
+  next if n.odd?
+  puts n
+end
+
+puts "---------------"
+# 4.11.5 redo
+
+questions = ["案件A", "案件B", "案件C"]
+questions.each do |q|
+  print "Aさん「#{q}を手伝ってもらえますか？」"
+  answer = ["Bさん「今、手が離せないのです」","Bさん「他の方を頼ってください」", "Bさん「良いですよ！」"].sample
+  puts answer
+  redo unless answer == "Bさん「良いですよ！」"
+  puts "Aさん「いや〜さすが！」"
+end
