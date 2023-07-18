@@ -203,9 +203,20 @@ puts "---------------"
 # 5.6.4 任意のキーワードを受け付ける**引数
 # 5.6.5 メソッド呼び出し時の{}省略
 
-def person(last_name: "山田", first_name: '太郎', favorite_food: "ラーメン", **others)
-  puts "私の名前は#{last_name} #{first_name}で、好きな食べ物は#{favorite_food}です。他に言いたいことは「#{others}」です。"
+# def person(last_name: "山田", first_name: '太郎', favorite_food: "ラーメン", **others)
+#   puts "私の名前は#{last_name} #{first_name}で、好きな食べ物は#{favorite_food}です。他に言いたいことは「#{others}」です。"
+# end
+
+# puts person(special_skill: "サッカーが得意")
+
+def person(last_name: "山田", first_name: '太郎', favorite_food: "ラーメン")
+  puts "私の名前は#{last_name} #{first_name}で、好きな食べ物は#{favorite_food}です。"
 end
 
-puts person(special_skill: "サッカーが得意")
+puts person()
 
+a = :apple
+b = "apple"
+
+puts a.upcase!
+puts b.upcase!
