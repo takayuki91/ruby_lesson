@@ -158,3 +158,54 @@ def buy_burger(menu, drink: true, potato: true)
 end
 
 buy_burger("cheese", drink: true, potato: true)
+
+
+
+puts "---------------"
+# 5.6 ハッシュとキーワード引数についてもっと詳しく
+# 5.6.1 ハッシュで使用頻度の高いメソッド
+
+# keysメソッド
+colors = { apple: :red, orange: :orange, melon: :green }
+puts colors.keys
+puts colors.values
+puts colors.has_key?(:apple)
+# エイリアス
+puts colors.key?(:apple)
+puts colors.include?(:apple)
+puts colors.member?(:apple)
+
+puts colors.has_key?(:kiwi)
+
+puts "---------------"
+# 5.6.2 **でハッシュを展開させる
+
+c = { orange: :orange, melon: :green }
+d = { apple: :red, **c }
+puts d
+
+# mergeでも可能
+c = { orange: :orange, melon: :green }
+d = { apple: :red }.merge(c)
+puts d
+
+puts "---------------"
+# 5.6.3 ハッシュを使った擬似キーワード引数
+
+# def buy_burger(menu, options = {})
+#   drink = options[:drink]
+#   potato = options[:potato]
+# end
+
+# buy_burger("cheese", drink: true, potato: true)
+
+puts "---------------"
+# 5.6.4 任意のキーワードを受け付ける**引数
+# 5.6.5 メソッド呼び出し時の{}省略
+
+def person(last_name: "山田", first_name: '太郎', favorite_food: "ラーメン", **others)
+  puts "私の名前は#{last_name} #{first_name}で、好きな食べ物は#{favorite_food}です。他に言いたいことは「#{others}」です。"
+end
+
+puts person(special_skill: "サッカーが得意")
+
