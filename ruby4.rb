@@ -534,7 +534,7 @@ dimensions = [
     end
 
 puts "---------------"
-# 入れ子になった配列を変数に多重代入する
+# 入れ子になった��列を変数に多重代入する
 
 dimension, i = [[10, 20], 0]
 puts dimension
@@ -725,9 +725,9 @@ end
 
 puts "---------------"
 ramens = ["とんこつラーメン", "醤油ラーメン", "塩ラーメン"]
-taste = ["スープを飲む", "麺をすする", "完食！"]
+tastes = ["スープを飲む", "麺をすする", "完食！"]
 ramens.each do |ramen|
-  taste.shuffle.each do |t|
+  tastes.shuffle.each do |t|
     puts "#{ramen}, #{t}"
     break if t == "完食！"
   end
