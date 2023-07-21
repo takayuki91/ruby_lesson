@@ -269,5 +269,5 @@ end
 
 text = "誕生日は1955年3月17日です"
 text.gsub(/(?<year>\d+)年(?<month>\d+)月(?<day>\d+)日/) do
-  puts "#{$~[:year]}-#{$~[:month]}-#{$~[:day]}" 
+  puts "#{$~[:year]}-#{$~[:month]}-#{$~[:day]}"
 end
