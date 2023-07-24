@@ -136,7 +136,7 @@ puts "---------------"
 #   def initialize(name)
 #     @name = name
 #   end
-  
+
 #   def hello
 #     "Hello, I am #{@name}."
 #   end
@@ -154,13 +154,13 @@ class User
   def initialize(name)
     @name = name
   end
-  
+
   def self.create_users(names)
     names.map do |name|
       User.new(name)
     end
   end
-  
+
   def hello
     "Hello, I am #{@name}."
   end
@@ -177,9 +177,9 @@ puts "---------------"
 # 7.3.5 定数
 class Product
   DEFAULT_PRICE = 0
-  
+
   attr_reader :name, :price
-  
+
   def initialize(name, price = DEFAULT_PRICE)
     @name = name
     @price = price
@@ -191,3 +191,4 @@ puts product.name
 puts product.price
 
 # テスト
+# テスト2
