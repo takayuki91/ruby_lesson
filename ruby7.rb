@@ -189,3 +189,5 @@ end
 product = Product.new("A free movie")
 puts product.name
 puts product.price
+
+# テスト
